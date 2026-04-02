@@ -111,7 +111,7 @@ export function extractFeatures(url: string): URLFeatures {
 // ================= BACKEND API =================
 
 export async function detectPhishingAPI(url: string) {
-  const res = await fetch("https://phishing-backend-h3lf.onrender.com", {
+  const res = await fetch("https://phishing-backend-h3lf.onrender.com/predict",  {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
