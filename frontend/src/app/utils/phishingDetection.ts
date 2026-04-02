@@ -111,7 +111,7 @@ export function extractFeatures(url: string): URLFeatures {
 // ================= BACKEND API =================
 
 export async function detectPhishingAPI(url: string) {
-  const res = await fetch("https://phishing-backend-h3lf.onrender.com/predict",  {
+  const res = await fetch("http://127.0.0.1:5000/predict", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -120,10 +120,8 @@ export async function detectPhishingAPI(url: string) {
   });
 
   if (!res.ok) {
-  const text = await res.text();
-  console.error("Backend error:", text);
-  throw new Error("Backend responded with error");
-}
+    throw new Error("Backend error");
+  }
 
   return await res.json();
 }
@@ -156,7 +154,6 @@ export function checkDomainInfo(url: string) {
     };
   }
 }
-
 
 // ================= WARNINGS =================
 
@@ -213,5 +210,3 @@ Risk Score: ${result.riskScore}/100
 Confidence: ${result.confidence}%
 `;
 }
-
-

@@ -41,7 +41,7 @@ export function Scanner() {
       }
 
       // ✅ REAL BACKEND CALL
-      const res = await fetch("https://phishing-backend-h3lf.onrender.com/predict", {
+      const res = await fetch("http://127.0.0.1:5000/predict", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
