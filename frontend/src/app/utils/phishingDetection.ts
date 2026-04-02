@@ -120,8 +120,10 @@ export async function detectPhishingAPI(url: string) {
   });
 
   if (!res.ok) {
-    throw new Error("Backend error");
-  }
+  const text = await res.text();
+  console.error("Backend error:", text);
+  throw new Error("Backend responded with error");
+}
 
   return await res.json();
 }
@@ -154,6 +156,7 @@ export function checkDomainInfo(url: string) {
     };
   }
 }
+
 
 // ================= WARNINGS =================
 
@@ -210,3 +213,5 @@ Risk Score: ${result.riskScore}/100
 Confidence: ${result.confidence}%
 `;
 }
+
+
